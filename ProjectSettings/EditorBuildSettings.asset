@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/BasicImageTracking_Greta.unity
-    guid: 9bded1763d21f43b188a9eacb421a31f
+    path: Assets/Scenes/ImageTrackingWithMultiplePrefabs_Greta.unity
+    guid: a3309dd4d961d4e65b2091b91b0e35d1
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: f8ce26fe3bc69499b9be4b2378e97a94,
       type: 2}
