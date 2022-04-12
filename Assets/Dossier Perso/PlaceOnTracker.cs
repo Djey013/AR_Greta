@@ -11,7 +11,8 @@ public class PlaceOnTracker : MonoBehaviour
     public ARTrackedImageManager imageManager;
     public GameObject _objectToSpawn;
     public SwitchManager _switchManager;
-    
+
+    public GameObject _objectLocation;
     
     private void OnEnable()
     {
@@ -32,6 +33,12 @@ public class PlaceOnTracker : MonoBehaviour
             _objectToSpawn = Instantiate(_switchManager._objectInArray[_switchManager.actualObjNumber], args.added[0].transform);
             
         }
+        
+        /*if (args.added.Count > 0)
+        {
+            _objectToSpawn = Instantiate(_objectLocation, args.added[0].transform);
+        }
+        */
 
         if (args.updated.Count > 0)
         {
@@ -47,12 +54,22 @@ public class PlaceOnTracker : MonoBehaviour
             }
             
         }
+        
+        /*if (args.updated.Count > 0)
+        {
+            _objectToSpawn.transform.position = args.updated[0].transform.position;
+            _objectToSpawn.transform.rotation = args.updated[0].transform.rotation;
+        }*/
+        
+        
 
         if (args.removed.Count > 0)
         {
             Destroy(_objectToSpawn);
             
         }
+
+        
 
     }
 
