@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Sphere : MonoBehaviour
 {
-    public Manager manager;
+    private Manager manager;
 
     public int Index = -1;
    

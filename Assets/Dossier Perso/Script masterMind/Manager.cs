@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Object = System.Object;
 using Random = UnityEngine.Random;
 
 public class Manager : MonoBehaviour
@@ -12,6 +13,8 @@ public class Manager : MonoBehaviour
 
     private int _actualLineNumber = -1;
     private Sphere _actualSphere;
+
+    public GameObject[] messageLog;
     
     private void Start()
     {
@@ -34,9 +37,11 @@ public class Manager : MonoBehaviour
             CheckLine();
             ActivateNewLine();
         }
+
+        
     }
 
-    private void CheckLine() // vérification de la ligne active
+    public void CheckLine() // vérification de la ligne active
     {
         int goodSphereNumber = 0;
         for (int i = 0; i < answer.Length; i++) // On teste chaque couleur
@@ -44,6 +49,7 @@ public class Manager : MonoBehaviour
             if (_colors[lines[_actualLineNumber].spheres[i].Index] == answer[i]) // On Vérifie d'abord si la couleur est bien placée
             {
                 Debug.Log("la boule n°" + i+" est bien placée !");
+                messageLog[0].SetActive(true);  // on affiche dans l'UI : "la boule est bien placée !"
                 goodSphereNumber++;
             }
             else
@@ -53,6 +59,7 @@ public class Manager : MonoBehaviour
                     if (_colors[lines[_actualLineNumber].spheres[i].Index] == answer[j]) 
                     {
                         Debug.Log("la boule n°" + i+" est mal placée !");
+                        messageLog[1].SetActive(true);  // on affiche dans l'UI : "La boule n'est pas au bon emplacement..."
 
                     }
                 }
@@ -62,10 +69,11 @@ public class Manager : MonoBehaviour
         if (goodSphereNumber == 4)
         {
             Debug.Log("VICTOIRE !!!!");
+            messageLog[2].SetActive(true);  // on affiche dans l'UI : "VICTOIRE !!!!"
         }
     }
     
-    private void ActivateNewLine()
+    public void ActivateNewLine()
     {
         if (_actualLineNumber < lines.Length - 1) // test pour vérifier que l'on est toujours dans le tableau de lignes
         {
@@ -75,6 +83,7 @@ public class Manager : MonoBehaviour
             if (_actualLineNumber > 0) // on vérifie que l'on est pas au premier passage, donc à la première ligne. Si ce n'est pas le cas on désactive la ligne précédente.
             {
                 lines[_actualLineNumber-1].isActive = false;
+                
 
             }
         }
@@ -101,4 +110,9 @@ public class Manager : MonoBehaviour
         }
 
     }
+
+    
+    
+    
+    
 }
