@@ -7,6 +7,7 @@ public class SwitchManager : MonoBehaviour
     public GameObject[] _objectInArray;
     public int actualObjNumber = 0;
     public PlaceOnTracker placeScript;
+    
     public void SwitchButton()
     {
         actualObjNumber++;
